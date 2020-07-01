@@ -5,16 +5,16 @@
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
                 $subMenu = subMenu($value['id'],$menu);
-                $url = $value['url'];
+                $url = str_replace("#","",$value['url']);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
                         $subMenu1 = subMenu($valueS['id'],$menu);   
-                        $urlS = $valueS['url']."/".$valueS['slug'];               
+                        $urlS = $url."/".$valueS['slug'];               
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
-                                $urlS2 = $valueS2['url']."/".$valueS2['slug'];
+                                $urlS2 = $url."/".$valueS2['slug'];
                                 $itemLv2 .= "<li><a href='".$urlS2."'>".$valueS2['title']."</a></li>";     
                          }
                             
