@@ -10,11 +10,11 @@
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
                         $subMenu1 = subMenu($valueS['id'],$menu);
-                        $slugS = str_replace("#","",$valueS['url']);
+                        $slugS = str_replace("#","",$valueS['url'])."/".$valueS['slug'];
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
-                                $slugS2 = str_replace("#","",$valueS2['url']);
+                                $slugS2 = str_replace("#","",$valueS2['url'])."/".$valueS2['slug'];
                                 $itemLv2 .= "<li><a href='".$slugS2."'>".$valueS2['title']."</a></li>";     
                          }
                             
