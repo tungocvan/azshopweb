@@ -15,18 +15,18 @@
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
                                 $slugS2 = $slug."/".$valueS2['slug'];
-                                $itemLv2 .= "<li><a href='".$slugS2."'>".$valueS2['title']."</a></li>";     
+                                $itemLv2 .= "<li><a href='".$slug."'>".$valueS2['title']."</a></li>";     
                          }
                             
                             $itemLv1 .= "<li>
-                                            <a href='".$slugS."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
+                                            <a href='".$slug."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
                                             <ul class='lavel-dropdown'>
                                                 ".$itemLv2."                          
                                             </ul>
                                         </li> ";
                             
                         }else{
-                            $itemLv1 .= "<li><a href='".$slugS."'>".$valueS['title']."</a></li>";
+                            $itemLv1 .= "<li><a href='".$slug."'>".$valueS['title']."</a></li>";
                         }
                         
                     }
