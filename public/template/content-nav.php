@@ -7,7 +7,7 @@
                 $subMenu = subMenu($value['id'],$menu);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
-                    foreach($menu as $keyS => $valueS) {
+                    foreach($subMenu as $keyS => $valueS) {
                         $itemLv1 .= "<li><a href='#'>".$valueS['title']."</a></li>";
                     }
                     $item .=
