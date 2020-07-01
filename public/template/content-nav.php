@@ -14,12 +14,12 @@
                             foreach($subMenu1 as $keyS2 => $valueS2) {
                                 $itemLv2 .= "<li><a href='#'>".$valueS2['title']."</a></li>";     
                             }
-                            $itemLv1 .=
-                            "<li><a href='#'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
-                                <ul class='lavel-dropdown'>
-                                    ".$itemLv2."                          
-                                </ul>
-                            </li> ";
+                            $itemLv1 .= "<li>
+                                            <a href='#'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
+                                            <ul class='lavel-dropdown'>
+                                                ".$itemLv2."                          
+                                            </ul>
+                                        </li> ";
                             
                         }else{
                             $itemLv1 .= "<li><a href='#'>".$valueS['title']."</a></li>";
@@ -49,7 +49,7 @@
     function subMenu($id,$menu) {
         $subs = array();
         foreach($menu as $key => $value){
-            if($value['parent']== $id){
+            if((int)$value['parent'] == (int)$id){
                 array_push($subs,$value);
             }
         }
