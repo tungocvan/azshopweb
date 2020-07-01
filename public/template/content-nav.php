@@ -23,10 +23,10 @@
         </nav>
         ";
     }
-    function showCategories($categories, $parent_id = 0, $char = '')
+    function showCategories($categories, $parent_id = 0, &$menuItem = "")
     {
         // BƯỚC 2.1: LẤY DANH SÁCH CATE CON
-        $cate_child = array(); $menuItem = "";
+        $cate_child = array(); 
         foreach ($categories as $key => $item)
         {
             // Nếu là chuyên mục con thì hiển thị
@@ -44,11 +44,16 @@
             foreach ($cate_child as $key => $item)
             {
                 // Hiển thị tiêu đề chuyên mục
-                $menuItem .= '<li>'.$item['title'];
+                if(count($categories) > 0 ) {
+                    $menuItem .= '<li class="drop">'.$item['title'];                
+                    // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
+                    showCategories($categories, $item['id'],$menuItem);
+                    $menuItem .= '</li>';
+                }else{
+                    $menuItem .= '<li>'.$item['title']; 
+                    $menuItem .= '</li>';
+                }
                 
-                // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-                showCategories($categories, $item['id']);
-                $menuItem .= '</li>';
             }
             $menuItem .= '</ul>';
         }
