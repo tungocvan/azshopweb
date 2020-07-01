@@ -26,7 +26,7 @@
     function showCategories($categories, $parent_id = 0, $char = '')
     {
         // BƯỚC 2.1: LẤY DANH SÁCH CATE CON
-        $cate_child = array();
+        $cate_child = array(); $menuItem = "";
         foreach ($categories as $key => $item)
         {
             // Nếu là chuyên mục con thì hiển thị
@@ -40,21 +40,26 @@
         // BƯỚC 2.2: HIỂN THỊ DANH SÁCH CHUYÊN MỤC CON NẾU CÓ
         if ($cate_child)
         {
-            echo "<ul class='main__menu'>";
+            $menuItem .= "<ul class='main__menu'>";
             foreach ($cate_child as $key => $item)
             {
                 // Hiển thị tiêu đề chuyên mục
-                echo '<li>'.$item['title'];
+                $menuItem .= '<li>'.$item['title'];
                 
                 // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
                 showCategories($categories, $item['id'], $char.'|---');
-                echo '</li>';
+                $menuItem .= '</li>';
             }
-            echo '</ul>';
+            $menuItem .= '</ul>';
+        }else{
+            $menuItem .= '<li>'.$item['title'];
         }
+        return $menuItem;
     }
 
-    $nav_menu =  showCategories($menu[2]);
+    $nav_menu = "<nav class='mainmenu__nav d-none d-lg-block'>";
+    $nav_menu .= showCategories($menu);
+    $nav_menu .="</nav>";
     
 ?>
 <!-- Start Header Style -->
