@@ -15,8 +15,8 @@
                                 $itemLv2 .= "<li><a href='#'>".$valueS2['title']."</a></li>";     
                             }
                             $itemLv1 .=
-                            "<li class='drop'><a href='#'> ".$valueS['title']." </a>
-                                <ul class='dropdown'>
+                            "<li><a href='#'> ".$valueS['title']." </a>
+                                <ul class='lavel-dropdown'>
                                     ".$itemLv2."                          
                                 </ul>
                             </li> ";
