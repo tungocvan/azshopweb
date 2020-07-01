@@ -11,11 +11,11 @@
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
                         $subMenu1 = subMenu($valueS['id'],$menu);   
-                        $urlS = $url."/".$valueS['slug'];               
+                        $urlS = $domain.$valueS['slug'];               
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
-                                $urlS2 = $url."/".$valueS2['slug'];
+                                $urlS2 = $domain.$valueS2['slug'];
                                 $itemLv2 .= "<li><a href='".$urlS2."'>".$valueS2['title']."</a></li>";     
                          }
                             
