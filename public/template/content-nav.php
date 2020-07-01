@@ -2,67 +2,72 @@
     $menu = menu_route('menu-nav');
     //var_dump($menu);
     //echo $my_var;
-    function show_nav_menu($menu=[]) {
-        return "
+    function show_nav($menuTop) {
+        $MenuLv0 ="
         <nav class='mainmenu__nav d-none d-lg-block'>
-            <ul class='main__menu'>                            
-                <li class='drop'><a href='portfolio-gutter-box-3.html'>portfolio</a>
-                    <ul class='dropdown'>
-                        <li><a href='#'>Boxed Style <span><i class='zmdi zmdi-chevron-right'></i></span></a>
-                            <ul class='lavel-dropdown'>
-                                <li><a href='portfolio-gutter-box-4.html'>Gutter 4 Column</a></li>
-                                <li><a href='portfolio-gutter-box-3.html'>Gutter 3 Column</a></li>                                            
-                            </ul>
-                        </li>
-                        <li><a href='#'>Wide Style</a> </li>
-                        
-                    </ul>
-                </li>                            
-                <li><a href='contact.html'>contact</a></li>
-            </ul>
-        </nav>
+           <ul class='main__menu'>
         ";
-    }
-    function showCategories($categories, $parent_id = 0, &$menuItem = "")
-    {
-        // BƯỚC 2.1: LẤY DANH SÁCH CATE CON
-        $cate_child = array(); 
-        foreach ($categories as $key => $item)
-        {
-            // Nếu là chuyên mục con thì hiển thị
-            if ($item['parent'] == $parent_id)
-            {
-                $cate_child[] = $item;
-                unset($categories[$key]);
-            }
-        }
-     
-        // BƯỚC 2.2: HIỂN THỊ DANH SÁCH CHUYÊN MỤC CON NẾU CÓ
-        
-        if ($cate_child)
-        {
-            $menuItem .= "<ul class='main__menu'>";
-            foreach ($cate_child as $key => $item)
-            {
-                // Hiển thị tiêu đề chuyên mục
+        foreach($menuTop as $key => $value){
+            $title =  $value['title'];
+            $parent = $value['parent'];
+            $slug = $value['slug'];
+            $url = $value['url'];
+            $id = $value['id'];
             
-                $menuItem .= '<li><a href="#">'.$item['title'];                
-                // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-                //showCategories($categories, $item['id'],$menuItem);
-                $menuItem .= '</a></li>';
-               
-                
+            $menuStr="";
+            if($parent == 0) {                       
+                $subMenu = subMenu($id,$menuTop);
+                if(count($subMenu) > 0){
+                    // call in subMenu
+                    $MenuLv0 = $MenuLv0. inSubMenu($value,$subMenu,$menuTop);
+                    
+                }else{
+                    $MenuLv0 = $MenuLv0. "<li><a href='".$url."'>".$title."</a></li>";
+                }
             }
-            $menuItem .= '</ul>';
+      
         }
-
-        return $menuItem;
+        return $MenuLv0 . "</ul></nav>";
+       } 
+  
+    function subMenu($id,$menu) {
+        $subs = array();
+        foreach($menu as $key => $value){
+            if($value['parent']== $id){
+                array_push($subs,$value);
+            }
+        }
+        return $subs;
     }
-
-    $nav_menu = "<nav class='mainmenu__nav d-none d-lg-block'>";
-    $nav_menu .= showCategories($menu);
-    $nav_menu .="</nav>";
-    
+    function inSubMenu($item,$menu,$menuTop) {
+        $MenuLv1 ="
+        <li class='drop'><a href='".$item['slug']."'>".$item['title']."</a>
+        <ul class='dropdown'>
+        ";   
+        $MenuLv2 ="";$SubMenuLv1 ="";    
+        foreach($menu  as $key => $value){      
+             $id = $value['id'];  
+             $subMenuLv1 = subMenu($id,$menuTop);
+             if(count($subMenuLv1) > 0) {
+                $MenuLv2 ="
+                <li class='drop'><a href='".$value['slug']."'>".$value['title']."</a>
+                <ul class='lavel-dropdown'>
+                ";  
+                $SubMenuLv2 ="";
+                foreach($subMenuLv1  as $keyS => $valueS){
+                    $SubMenuLv2 =$SubMenuLv2 . "
+                    <li><a href='".$valueS['slug']."'>".$valueS['title']."</a></li>
+                    ";
+                }    
+                $SubMenuLv1 =$SubMenuLv1.$MenuLv2.$SubMenuLv2."</ul></li>";
+             }else{
+                $SubMenuLv1 =$SubMenuLv1 .  "<li><a href='".$value['slug']."'>".$value['title']."</a></li>";
+             }
+        }
+        
+        return $MenuLv1.$SubMenuLv1."</ul></li>";
+    }
+    $nav_menu = show_nav($menu);
 ?>
 <!-- Start Header Style -->
 <header id='header' class='htc-header header--3 bg__white clearfix'>
