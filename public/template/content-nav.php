@@ -1,5 +1,5 @@
 <?php
-    //$menu = menu_route('menu-nav');
+    $menu = menu_route('menu-nav');
     //var_dump($menu);
     //echo $my_var;
     function show_nav_menu($menu=[]) {
@@ -23,7 +23,39 @@
         </nav>
         ";
     }
-    $nav_menu = show_nav_menu();
+    function showCategories($categories, $parent_id = 0, $char = '')
+    {
+        // BƯỚC 2.1: LẤY DANH SÁCH CATE CON
+        $cate_child = array();
+        foreach ($categories as $key => $item)
+        {
+            // Nếu là chuyên mục con thì hiển thị
+            if ($item['parent'] == $parent_id)
+            {
+                $cate_child[] = $item;
+                unset($categories[$key]);
+            }
+        }
+     
+        // BƯỚC 2.2: HIỂN THỊ DANH SÁCH CHUYÊN MỤC CON NẾU CÓ
+        if ($cate_child)
+        {
+            echo "<ul class='main__menu'>";
+            foreach ($cate_child as $key => $item)
+            {
+                // Hiển thị tiêu đề chuyên mục
+                echo '<li>'.$item['title'];
+                
+                // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
+                showCategories($categories, $item['id'], $char.'|---');
+                echo '</li>';
+            }
+            echo '</ul>';
+        }
+    }
+
+    $nav_menu =  showCategories($menu);
+    
 ?>
 <!-- Start Header Style -->
 <header id='header' class='htc-header header--3 bg__white clearfix'>
