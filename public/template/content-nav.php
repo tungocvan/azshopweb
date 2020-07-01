@@ -8,7 +8,7 @@
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
-                        $subMenu1 = subMenu($valueS['id'],$subMenu);
+                        $subMenu1 = subMenu($valueS['id'],$menu);
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
