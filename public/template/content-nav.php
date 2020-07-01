@@ -1,34 +1,34 @@
 <?php
     $menu = menu_route('menu-nav');
-    //var_dump($menu);
-    //echo $my_var;
-    function show_nav($menuTop) {
-        $MenuLv0 ="
-        <nav class='mainmenu__nav d-none d-lg-block'>
-           <ul class='main__menu'>
-        ";
-        foreach($menuTop as $key => $value){
-            $title =  $value['title'];
-            $parent = $value['parent'];
-            $slug = $value['slug'];
-            $url = $value['url'];
-            $id = $value['id'];
-            
-            $menuStr="";
-            if($parent == 0) {                       
-                $subMenu = subMenu($id,$menuTop);
-                if(count($subMenu) > 0){
-                    // call in subMenu
-                    $MenuLv0 = $MenuLv0. inSubMenu($value,$subMenu,$menuTop);
-                    
+    function show_nav_menu($menu=[]) {
+        $item ="";
+        foreach($menu as $key => $value) {
+            if($value['parent'] == 0 ) {
+                $subMenu = subMenu($value['id']);
+                if(count($subMenu) > 0 ){
+                    $itemLv1 = "";
+                    foreach($menu as $keyS => $valueS) {
+                        $itemLv1 .= "<li><a href='#'>".$valueS['title']."</a></li>";
+                    }
+                    $item .=
+                    "<li class='drop'><a href='#'>".$value['title']."</a>
+                        <ul class='dropdown'>
+                            ".$itemLv1."                          
+                        </ul>
+                    </li> ";
                 }else{
-                    $MenuLv0 = $MenuLv0. "<li><a href='".$url."'>".$title."</a></li>";
+                    $item .= "<li><a href='contact.html'>".$value['title']."</a></li>";
                 }
             }
-      
         }
-        return $MenuLv0 . "</ul></nav>";
-       } 
+        return "
+        <nav class='mainmenu__nav d-none d-lg-block'>
+            <ul class='main__menu'>      
+                ".$item."
+            </ul>
+        </nav>
+        ";
+    }
   
     function subMenu($id,$menu) {
         $subs = array();
@@ -39,35 +39,8 @@
         }
         return $subs;
     }
-    function inSubMenu($item,$menu,$menuTop) {
-        $MenuLv1 ="
-        <li class='drop'><a href='".$item['slug']."'>".$item['title']."</a>
-        <ul class='dropdown'>
-        ";   
-        $MenuLv2 ="";$SubMenuLv1 ="";    
-        foreach($menu  as $key => $value){      
-             $id = $value['id'];  
-             $subMenuLv1 = subMenu($id,$menuTop);
-             if(count($subMenuLv1) > 0) {
-                $MenuLv2 ="
-                <li class='drop'><a href='".$value['slug']."'>".$value['title']."</a>
-                <ul class='lavel-dropdown'>
-                ";  
-                $SubMenuLv2 ="";
-                foreach($subMenuLv1  as $keyS => $valueS){
-                    $SubMenuLv2 =$SubMenuLv2 . "
-                    <li><a href='".$valueS['slug']."'>".$valueS['title']."</a></li>
-                    ";
-                }    
-                $SubMenuLv1 =$SubMenuLv1.$MenuLv2.$SubMenuLv2."</ul></li>";
-             }else{
-                $SubMenuLv1 =$SubMenuLv1 .  "<li><a href='".$value['slug']."'>".$value['title']."</a></li>";
-             }
-        }
-        
-        return $MenuLv1.$SubMenuLv1."</ul></li>";
-    }
-    $nav_menu = show_nav($menu);
+
+    $nav_menu = show_nav_menu($menu) ;
 ?>
 <!-- Start Header Style -->
 <header id='header' class='htc-header header--3 bg__white clearfix'>
