@@ -4,7 +4,7 @@
         $item ="";
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
-                $subMenu = subMenu($value['id']);
+                $subMenu = subMenu($value['id'],$menu);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($menu as $keyS => $valueS) {
