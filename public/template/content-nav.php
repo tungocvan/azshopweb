@@ -5,31 +5,32 @@
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
                 $subMenu = subMenu($value['id'],$menu);
+                $slug = str_replace("#","",$value['url']);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
                         $subMenu1 = subMenu($valueS['id'],$menu);
-                        $slug = str_replace("#","",$valueS['slug']);
+                        $slugS = str_replace("#","",$valueS['url']);
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
-                                $slug = str_replace("#","",$valueS2['slug']);
-                                $itemLv2 .= "<li><a href='".$slug."'>".$valueS2['title']."</a></li>";     
-                            }
+                                $slugS2 = str_replace("#","",$valueS2['url']);
+                                $itemLv2 .= "<li><a href='".$slugS2."'>".$valueS2['title']."</a></li>";     
+                         }
                             
                             $itemLv1 .= "<li>
-                                            <a href='".$slug."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
+                                            <a href='".$slugS."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
                                             <ul class='lavel-dropdown'>
                                                 ".$itemLv2."                          
                                             </ul>
                                         </li> ";
                             
                         }else{
-                            $itemLv1 .= "<li><a href='".$slug."'>".$valueS['title']."</a></li>";
+                            $itemLv1 .= "<li><a href='".$slugS."'>".$valueS['title']."</a></li>";
                         }
                         
                     }
-                    $slug = str_replace("#","",$value['slug']);
+                    
                     $item .=
                     "<li class='drop'><a href='".$slug."'> ".$value['title']."</a>
                         <ul class='dropdown'>
