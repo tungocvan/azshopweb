@@ -54,7 +54,7 @@
         }
     }
 
-    $nav_menu =  showCategories($menu);
+    $nav_menu =  showCategories($menu[2]);
     
 ?>
 <!-- Start Header Style -->
