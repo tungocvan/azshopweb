@@ -10,23 +10,23 @@
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
                         $subMenu1 = subMenu($valueS['id'],$menu);
-                        $slugS = $slug."/".$valueS['slug'];
+                  
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
                                 $slugS2 = $slug."/".$valueS2['slug'];
-                                $itemLv2 .= "<li><a href='".$slug."'>".$valueS2['title']."</a></li>";     
+                                $itemLv2 .= "<li><a href='".$slug."/".$valueS2['slug']."'>".$valueS2['title']."</a></li>";     
                          }
                             
                             $itemLv1 .= "<li>
-                                            <a href='".$slug."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
+                                            <a href='".$slug."/".$valueS['slug']."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
                                             <ul class='lavel-dropdown'>
                                                 ".$itemLv2."                          
                                             </ul>
                                         </li> ";
                             
                         }else{
-                            $itemLv1 .= "<li><a href='".$slug."'>".$valueS['title']."</a></li>";
+                            $itemLv1 .= "<li><a href='".$slug."/".$valueS['slug']."'>".$valueS['title']."</a></li>";
                         }
                         
                     }
