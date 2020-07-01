@@ -47,12 +47,10 @@
                 $menuItem .= '<li>'.$item['title'];
                 
                 // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-                showCategories($categories, $item['id'], $char.'|---');
+                showCategories($categories, $item['id']);
                 $menuItem .= '</li>';
             }
             $menuItem .= '</ul>';
-        }else{
-            $menuItem .= '<li>'.$item['title'];
         }
         return $menuItem;
     }
