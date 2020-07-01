@@ -8,16 +8,32 @@
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
-                        $itemLv1 .= "<li><a href='#'>".$valueS['title']."</a></li>";
+                        $subMenu1 = subMenu($valueS['id'],$subMenu);
+                        if(count($subMenu1) > 0 ){
+                            $itemLv2 = "";
+                            foreach($subMenu as $keyS2 => $valueS2) {
+                                $itemLv2 .= "<li><a href='#'>".$valueS2['title']."</a></li>";     
+                            }
+                            $itemLv1 .=
+                            "<li class='drop'><a href='#'> ".$valueS['title']." </a>
+                                <ul class='dropdown'>
+                                    ".$itemLv2."                          
+                                </ul>
+                            </li> ";
+                            
+                        }else{
+                            $itemLv1 .= "<li><a href='#'>".$valueS['title']."</a></li>";
+                        }
+                        
                     }
                     $item .=
-                    "<li class='drop'><a href='#'>".$value['title']."</a>
+                    "<li class='drop'><a href='#'> ".$value['title']." </a>
                         <ul class='dropdown'>
                             ".$itemLv1."                          
                         </ul>
                     </li> ";
                 }else{
-                    $item .= "<li><a href='contact.html'>".$value['title']."</a></li>";
+                    $item .= "<li><a href='#'>".$value['title']."</a></li>";
                 }
             }
         }
