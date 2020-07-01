@@ -40,7 +40,7 @@
                 </div>
                 <!-- Start MAinmenu Ares -->
                 <div class='col-md-8 col-lg-8 d-none d-lg-block'>
-                    ".$nav_menu."
+                    <?php echo $nav_menu; ?>
                     <div class='mobile-menu clearfix d-none'>
                         <nav id='mobile_dropdown'>
                             <ul>
