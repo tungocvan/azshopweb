@@ -1,6 +1,6 @@
 <?php
-    //$menu = menu_route('menu-nav');
-    //var_dump($menu);
+    $menu = menu_route('menu-nav');
+    var_dump($menu);
     //echo $my_var;
 ?>
 <!-- Start Header Style -->
