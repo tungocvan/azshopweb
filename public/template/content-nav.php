@@ -5,40 +5,40 @@
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
                 $subMenu = subMenu($value['id'],$menu);
-                $slug = str_replace("#","",$value['url']);
+                $url = $value['url'];
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
-                        $subMenu1 = subMenu($valueS['id'],$menu);
-                  
+                        $subMenu1 = subMenu($valueS['id'],$menu);   
+                        $urlS = $valueS['url']."/".$valueS['slug'];               
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
                             foreach($subMenu1 as $keyS2 => $valueS2) {
-                                $slugS2 = $slug."/".$valueS2['slug'];
-                                $itemLv2 .= "<li><a href='".$slug."/".$valueS2['slug']."'>".$valueS2['title']."</a></li>";     
+                                $urlS2 = $valueS2['url']."/".$valueS2['slug'];
+                                $itemLv2 .= "<li><a href='".$urlS2."'>".$valueS2['title']."</a></li>";     
                          }
                             
                             $itemLv1 .= "<li>
-                                            <a href='".$slug."/".$valueS['slug']."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
+                                            <a href='".$urlS."'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
                                             <ul class='lavel-dropdown'>
                                                 ".$itemLv2."                          
                                             </ul>
                                         </li> ";
                             
                         }else{
-                            $itemLv1 .= "<li><a href='".$slug."/".$valueS['slug']."'>".$valueS['title']."</a></li>";
+                            $itemLv1 .= "<li><a href='".$urlS."'>".$valueS['title']."</a></li>";
                         }
                         
                     }
                     
                     $item .=
-                    "<li class='drop'><a href='".$slug."'> ".$value['title']."</a>
+                    "<li class='drop'><a href='".$url."'> ".$value['title']."</a>
                         <ul class='dropdown'>
                             ".$itemLv1."                          
                         </ul>
                     </li> ";
                 }else{
-                    $item .= "<li><a href='".$slug."'>".$value['title']."</a></li>";                    
+                    $item .= "<li><a href='".$url."'>".$value['title']."</a></li>";                    
                 }
             }
         }
