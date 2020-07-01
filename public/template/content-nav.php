@@ -11,11 +11,11 @@
                         $subMenu1 = subMenu($valueS['id'],$subMenu);
                         if(count($subMenu1) > 0 ){
                             $itemLv2 = "";
-                            foreach($subMenu as $keyS2 => $valueS2) {
+                            foreach($subMenu1 as $keyS2 => $valueS2) {
                                 $itemLv2 .= "<li><a href='#'>".$valueS2['title']."</a></li>";     
                             }
                             $itemLv1 .=
-                            "<li><a href='#'> ".$valueS['title']." </a>
+                            "<li><a href='#'> ".$valueS['title']." <span><i class='zmdi zmdi-chevron-right'></i></span></a>
                                 <ul class='lavel-dropdown'>
                                     ".$itemLv2."                          
                                 </ul>
@@ -27,7 +27,7 @@
                         
                     }
                     $item .=
-                    "<li class='drop'><a href='#'> ".$value['title']." </a>
+                    "<li class='drop'><a href='#'> ".$value['title']."</a>
                         <ul class='dropdown'>
                             ".$itemLv1."                          
                         </ul>
