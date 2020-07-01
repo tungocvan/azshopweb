@@ -38,25 +38,24 @@
         }
      
         // BƯỚC 2.2: HIỂN THỊ DANH SÁCH CHUYÊN MỤC CON NẾU CÓ
+        
         if ($cate_child)
         {
             $menuItem .= "<ul class='main__menu'>";
             foreach ($cate_child as $key => $item)
             {
                 // Hiển thị tiêu đề chuyên mục
-                if(count($categories) > 0 ) {
-                    $menuItem .= '<li class="drop">'.$item['title'];                
-                    // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-                    showCategories($categories, $item['id'],$menuItem);
-                    $menuItem .= '</li>';
-                }else{
-                    $menuItem .= '<li>'.$item['title']; 
-                    $menuItem .= '</li>';
-                }
+            
+                $menuItem .= '<li><a href="#">'.$item['title'];                
+                // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
+                //showCategories($categories, $item['id'],$menuItem);
+                $menuItem .= '</a></li>';
+               
                 
             }
             $menuItem .= '</ul>';
         }
+
         return $menuItem;
     }
 
