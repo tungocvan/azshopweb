@@ -189,7 +189,7 @@ function xu_ly_url() {
 	$uri = str_replace("#","/",$uri);
 	$array = explode('/', $uri);
 	$url = pathinfo($uri)['dirname'];
-	echo $array[5];
+	echo '<pre>';print_r($array);echo '</pre>';
 	if(!isset($array[6])){
 		if($array[4] == "product" && $array[5]!=null) {			
 			$_SESSION['cateSlugProduct'] = $array[5];
