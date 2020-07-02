@@ -189,8 +189,9 @@ function xu_ly_url() {
 	$uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	//echo '<pre>';print_r(pathinfo("http://localhost/wp532/abc"));echo '</pre>'; die();
 	$array = explode('/', $uri);
-	if($array[2] == "product" && isset($array[3])) {
 	
+	if($array[2] == "product" && isset($array[3])) {
+			echo '<pre>';print_r($array);echo '</pre>';
 			$_SESSION['cateSlugProduct'] = $array[3];
 	
 		if(isset($array[4])){
