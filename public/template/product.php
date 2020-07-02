@@ -1,5 +1,5 @@
 <!-- Start Our Product Area -->
-<h2>$cateSlugProduct</h2>
+<h2><?php echo $cateSlugProduct; ?></h2>
 <section class='htc__product__area shop__page ptb--130 bg__white'>
     <div class='container'>
         <div class='htc__product__container'>

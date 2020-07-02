@@ -1,4 +1,5 @@
 <!-- Start Product Details -->
+<h2><?php echo $slugProduct; ?></h2>
 <section class='htc__product__details pt--120 pb--100 bg__white'>
     <div class='container'>
         <div class='row'>

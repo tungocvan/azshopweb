@@ -193,6 +193,7 @@ function xu_ly_url() {
 	
 		if(isset($array[6])){
 			$_SESSION['slugProduct'] = $array[6];
+			$url = str_replace($array[4],$array[4]."deltail",$url);
 		}
 		
 		$url = pathinfo($uri)['dirname'];

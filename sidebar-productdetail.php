@@ -9,6 +9,9 @@
 ?>
 <div class="wrapper fixed__footer">
 	<?php 
+		if($_SESSION['slugProduct']) {
+			set_query_var( 'slugProduct', $_SESSION['slugProduct'] );
+		}
 	    set_query_var( 'title', 'Product Detail' ); // -> truyền dữ liệu vào biến my_var -> truyền vào template
 	    get_template_part( 'public/template/content', 'nav' ); // -> content-nav.php
         get_template_part( 'public/template/banner', 'area' ); // -> banner-area.php
