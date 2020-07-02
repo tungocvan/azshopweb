@@ -190,21 +190,21 @@ function xu_ly_url() {
 	$url = pathinfo($uri)['dirname'];
 	echo $array[5];
 	if(!isset($array[6])){
-		if($array[4] == "product" && isset($array[5])) {			
+		if($array[4] == "product" && $array[5]!=null) {			
 			$_SESSION['cateSlugProduct'] = $array[5];
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
-		if($array[4] == "productdetail" && isset($array[5])) {			
+		if($array[4] == "productdetail" && $array[5]!=null) {			
 			$_SESSION['slugProduct'] = $array[5];
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
 	}
 	if(!isset($array[6])){
-		if($array[4] == "post" && isset($array[5])) {			
+		if($array[4] == "post" && $array[5]!=null) {			
 			$_SESSION['cateSlugPost'] = $array[5];
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
-		if($array[4] == "postdetails" && isset($array[5])) {			
+		if($array[4] == "postdetails" && $array[5]!=null) {			
 			$_SESSION['slugPost'] = $array[5];
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
