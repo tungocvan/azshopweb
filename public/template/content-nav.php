@@ -80,7 +80,7 @@
             <div class='row'>
                 <div class='col-md-6 col-lg-2 col-5'>
                     <div class='logo'>
-                        <a href='/azhshopweb'>
+                        <a href='/azshopweb'>
                             <img src='<?php echo TNV_URI_PUBLIC; ?>images/logo/logo.png' alt='logo'>
                         </a>
                     </div>
