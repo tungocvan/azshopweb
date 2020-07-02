@@ -7,34 +7,5 @@
  * @package azshopweb
  */
 
-$uri = $_SERVER['REQUEST_URI'];
-$array = explode('/', $uri);
-echo '<pre>';print_r($array);echo '</pre>';
-if(isset($_SESSION['nav-menu'])){
-	echo "Menu:";
-	echo '<pre>';print_r($_SESSION['nav-menu']);echo '</pre>';
-}
-if($array[2] == "product") {
-	if($array[3] !="") {	
-		if($array[4] !="") {
-			echo "-  slug: ".$array[4];
-			$slug = $array[4];
-		}else{
-			echo "product slug: ".$array[3];
-			$cateSLug = $array[3];
-		}
-	}
-}else if($array[2] == "post") {
-	if($array[3] !="") {		
-		if($array[4] !="") {
-			echo "- slug: ".$array[4];
-			$slug = $array[4];
-		}else{
-			echo "post slug: ".$array[3];
-			$cateSLug = $array[3];
-		}
-	}
-}else {
-	echo "path not found";
-}
+echo "path not found";
 ?>
