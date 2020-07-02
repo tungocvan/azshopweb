@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * The main template file
  * Template Name: Master-Layout
