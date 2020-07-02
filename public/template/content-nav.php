@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //session_start();
     $menu = menu_route('menu-nav');
     $domain = "https://tungocvan.com/azshopweb/";
     function show_nav_menu($menu=[]) {
