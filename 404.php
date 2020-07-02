@@ -10,6 +10,10 @@
 $uri = $_SERVER['REQUEST_URI'];
 $array = explode('/', $uri);
 echo '<pre>';print_r($array);echo '</pre>';
+if(isset($_SESSION['nav_menu'])){
+	echo "Menu:";
+	echo '<pre>';print_r($_SESSION['nav_menu']);echo '</pre>';
+}
 if($array[2] == "product") {
 	if($array[3] !="") {	
 		if($array[4] !="") {
