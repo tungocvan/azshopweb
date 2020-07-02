@@ -1,5 +1,5 @@
 <?php
-//    session_start();
+    session_start();
     $menu = menu_route('menu-nav');
     $domain = "https://tungocvan.com/azshopweb/";
     function show_nav_menu($menu=[]) {
@@ -7,8 +7,8 @@
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
                 $subMenu = subMenu($value['id'],$menu);
-                $url = $domain;
-                //$url = $domain.str_replace("#","",$value['url']);
+                //$url = $domain;
+                $url = $domain.str_replace("#","",$value['url']);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
