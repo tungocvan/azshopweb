@@ -187,6 +187,7 @@ add_action('init', 'xu_ly_url');
 function xu_ly_url() {
 	$uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	$array = explode('/', $uri);
+	$url = pathinfo($uri)['dirname'];
 	if($array[4] == "product" && isset($array[5])) {
 			
 			$_SESSION['cateSlugProduct'] = $array[5];
@@ -196,7 +197,7 @@ function xu_ly_url() {
 			$url = str_replace($array[4],$array[4]."detail",$url);
 		}
 		
-		$url = pathinfo($uri)['dirname'];
+		
 		echo "<script>window.location.href='".$url."';</script>"; 
 	}
 
