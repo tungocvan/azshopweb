@@ -186,7 +186,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 add_action('init', 'xu_ly_url');
 function xu_ly_url() {
 	$uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	$uri = str_replace("#","",$uri);
+	$uri = str_replace("#","/",$uri);
 	$array = explode('/', $uri);
 	$url = pathinfo($uri)['dirname'];
 	echo $array[5];

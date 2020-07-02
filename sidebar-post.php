@@ -12,7 +12,7 @@
 		if($_SESSION['cateSlugPost']) {
 			//set_query_var( 'cateSlugPost', $_SESSION['cateSlugPost'] );
 			set_query_var( 'cateSlugPost', $_SESSION['cateSlugPost'] );
-			echo "<script>window.location.hash='/".$_SESSION['cateSlugPost']."';</script>";
+			echo "<script>window.location.hash='".$_SESSION['cateSlugPost']."';</script>";
 		}
 	    set_query_var( 'title', 'Post' ); // -> truyền dữ liệu vào biến my_var -> truyền vào template
 	    get_template_part( 'public/template/content', 'nav' ); // -> content-nav.php
