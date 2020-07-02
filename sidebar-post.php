@@ -12,7 +12,7 @@
 		if($_SESSION['cateSlugPost']) {
 			//set_query_var( 'cateSlugPost', $_SESSION['cateSlugPost'] );
 			set_query_var( 'cateSlugPost', $_SESSION['uri'] );
-			echo "<script>window.location.replace='".$_SESSION['uri']."';</script>"; 
+			echo "<script>window.location.href('".$_SESSION['uri']."');</script>"; 
 		}
 	    set_query_var( 'title', 'Post' ); // -> truyền dữ liệu vào biến my_var -> truyền vào template
 	    get_template_part( 'public/template/content', 'nav' ); // -> content-nav.php
