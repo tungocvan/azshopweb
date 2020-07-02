@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * tungocvan functions and definitions
  *
@@ -179,4 +180,25 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+// xữ lý url 
+add_action('init', 'xu_ly_url');
+function xu_ly_url() {
+	
+	$uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	//echo '<pre>';print_r(pathinfo("http://localhost/wp532/abc"));echo '</pre>'; die();
+	$array = explode('/', $uri);
+	if($array[2] == "product") {
+		if(isset($array[3])){
+			$_SESSION['cateSlugProduct'] = $array[3];
+		}
+		if(isset($array[4])){
+			$_SESSION['slugProduct'] = $array[4];
+		}
+		
+		$url = pathinfo($uri)['dirname'];
+		echo "<script>window.location.href='".$url."';</script>"; 
+	}
+
 }
