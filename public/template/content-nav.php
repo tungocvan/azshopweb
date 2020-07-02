@@ -66,9 +66,7 @@
 
     if(isset($_SESSION['nav-menu'])){
         $nav_menu = $_SESSION['nav-menu'];
-        echo "SESSION" ;
-        die();
-    } else{
+     } else{
         $nav_menu = show_nav_menu($menu) ;
         $_SESSION['nav-menu'] = $nav_menu;
     }
