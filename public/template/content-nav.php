@@ -7,7 +7,8 @@
         foreach($menu as $key => $value) {
             if($value['parent'] == 0 ) {
                 $subMenu = subMenu($value['id'],$menu);
-                $url = $domain.str_replace("#","",$value['url']);
+                $url = $domain;
+                //$url = $domain.str_replace("#","",$value['url']);
                 if(count($subMenu) > 0 ){
                     $itemLv1 = "";
                     foreach($subMenu as $keyS => $valueS) {
@@ -65,6 +66,7 @@
 
     if(isset($_SESSION['nav_menu'])){
         $nav_menu = $_SESSION['nav_menu'];
+        echo "SESSION" ;
     } else{
         $nav_menu = show_nav_menu($menu) ;
         $_SESSION['nav_menu'] = $nav_menu;
@@ -79,7 +81,7 @@
             <div class='row'>
                 <div class='col-md-6 col-lg-2 col-5'>
                     <div class='logo'>
-                        <a href='index.php'>
+                        <a href='/'>
                             <img src='<?php echo TNV_URI_PUBLIC; ?>images/logo/logo.png' alt='logo'>
                         </a>
                     </div>
