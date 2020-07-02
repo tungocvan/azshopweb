@@ -11,6 +11,7 @@
 	<?php 
 		if($_SESSION['cateSlugProduct']) {
 			set_query_var( 'cateSlugProduct', $_SESSION['cateSlugProduct'] );
+			echo "<script>window.location.hash='/".$_SESSION['cateSlugProduct']."';</script>";
 		}
 
 	    set_query_var( 'title', 'Product' ); // -> truyền dữ liệu vào biến my_var -> truyền vào template

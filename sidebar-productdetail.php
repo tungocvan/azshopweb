@@ -11,6 +11,7 @@
 	<?php 
 		if($_SESSION['slugProduct']) {
 			set_query_var( 'slugProduct', $_SESSION['slugProduct'] );
+			echo "<script>window.location.hash='/".$_SESSION['slugProduct']."';</script>";
 		}
 	    set_query_var( 'title', 'Product Detail' ); // -> truyền dữ liệu vào biến my_var -> truyền vào template
 	    get_template_part( 'public/template/content', 'nav' ); // -> content-nav.php
