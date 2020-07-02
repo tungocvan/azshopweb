@@ -6,6 +6,6 @@
  *
  * @package azshopweb
  */
-
+do_action('xu_ly_url');
 echo "path not found";
 ?>
