@@ -64,13 +64,13 @@
         return $subs;
     }
 
-    if(isset($_SESSION['nav_menu'])){
-        $nav_menu = $_SESSION['nav_menu'];
+    if(isset($_SESSION['nav-menu'])){
+        $nav_menu = $_SESSION['nav-menu'];
         echo "SESSION" ;
         die();
     } else{
         $nav_menu = show_nav_menu($menu) ;
-        $_SESSION['nav_menu'] = $nav_menu;
+        $_SESSION['nav-menu'] = $nav_menu;
     }
     
 ?>
