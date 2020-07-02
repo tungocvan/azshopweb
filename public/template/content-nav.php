@@ -1,4 +1,5 @@
 <?php
+//    session_start();
     $menu = menu_route('menu-nav');
     $domain = "https://tungocvan.com/azshopweb/";
     function show_nav_menu($menu=[]) {
@@ -62,7 +63,13 @@
         return $subs;
     }
 
-    $nav_menu = show_nav_menu($menu) ;
+    if(isset($_SESSION['nav_menu'])){
+        $nav_menu = $_SESSION['nav_menu'];
+    } else{
+        $nav_menu = show_nav_menu($menu) ;
+        $_SESSION['nav_menu'] = $nav_menu;
+    }
+    
 ?>
 <!-- Start Header Style -->
 <header id='header' class='htc-header header--3 bg__white clearfix'>
