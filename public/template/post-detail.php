@@ -1,3 +1,4 @@
+<h2><?php echo $slugPost; ?></h2>
 <!-- Start Our Blog Area -->
 <section class='blog-details-wrap ptb--120 bg__white'>
     <div class='container'>

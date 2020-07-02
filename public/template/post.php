@@ -1,3 +1,4 @@
+<h2><?php echo $cateSlugPost; ?></h2>
 <!-- Start BLog Area -->
 <div class='htc__blog__area bg__white ptb--120'>
     <div class='container'>

@@ -188,17 +188,26 @@ function xu_ly_url() {
 	$uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	$array = explode('/', $uri);
 	$url = pathinfo($uri)['dirname'];
-	if($array[4] == "product" && isset($array[5])) {
-			
+	if(!isset($array[6])){
+		if($array[4] == "product" && isset($array[5])) {			
 			$_SESSION['cateSlugProduct'] = $array[5];
-	
-		if(isset($array[6])){
-			$_SESSION['slugProduct'] = $array[6];
-			$url = str_replace($array[4],$array[4]."detail",$url);
+			echo "<script>window.location.href='".$url."';</script>"; 
 		}
-		
-		
-		echo "<script>window.location.href='".$url."';</script>"; 
+		if($array[4] == "productdetail" && isset($array[5])) {			
+			$_SESSION['slugProduct'] = $array[5];
+			echo "<script>window.location.href='".$url."';</script>"; 
+		}
 	}
+	if(!isset($array[6])){
+		if($array[4] == "post" && isset($array[5])) {			
+			$_SESSION['cateSlugPost'] = $array[5];
+			echo "<script>window.location.href='".$url."';</script>"; 
+		}
+		if($array[4] == "postdetails" && isset($array[5])) {			
+			$_SESSION['slugPost'] = $array[5];
+			echo "<script>window.location.href='".$url."';</script>"; 
+		}
+	}
+	
 
 }
