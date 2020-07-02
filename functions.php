@@ -192,10 +192,12 @@ function xu_ly_url() {
 	if(!isset($array[6])){
 		if($array[4] == "product" && $array[5]!=null) {			
 			$_SESSION['cateSlugProduct'] = $array[5];
+			$_SESSION['uri'] = $uri;
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
 		if($array[4] == "productdetail" && $array[5]!=null) {			
 			$_SESSION['slugProduct'] = $array[5];
+			$_SESSION['uri'] = $uri;
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
 	}
