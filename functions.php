@@ -204,10 +204,12 @@ function xu_ly_url() {
 	if(!isset($array[6])){
 		if($array[4] == "post" && $array[5]!=null) {			
 			$_SESSION['cateSlugPost'] = $array[5];
+			$_SESSION['uri'] = $uri;
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
 		if($array[4] == "postdetails" && $array[5]!=null) {			
 			$_SESSION['slugPost'] = $array[5];
+			$_SESSION['uri'] = $uri;
 			echo "<script>window.location.href='".$url."';</script>"; 
 		}
 	}
