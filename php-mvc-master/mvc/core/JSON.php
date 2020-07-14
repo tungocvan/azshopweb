@@ -5,10 +5,10 @@ class JSON{
     private $dataPost=[];
     private $dataMenu=[];
     private $dataCateSlugProduct=[];
-    protected $stringProduct= 'http://localhost/wp532/wp-admin/productJson.json';
-    protected $stringPost = 'http://localhost/wp532/wp-admin/postJson.json';
-    protected $stringMenu = 'http://localhost/wp532/wp-admin/menuJson.json';
-    protected $stringBanner = 'http://localhost/wp532/wp-admin/bannerJson.json';
+    protected $stringProduct= 'http://mvc.tungocvan.com/mvc/JSON/productJson.json';
+    protected $stringPost = 'http://mvc.tungocvan.com/mvc/JSON/postJson.json';
+    protected $stringMenu = 'http://mvc.tungocvan.com/mvc/JSON/menuJson.json';
+    protected $stringBanner = 'http://mvc.tungocvan.com/mvc/JSON/bannerJson.json';
 
     function __construct(){
         $string = file_get_contents($this->stringProduct);
